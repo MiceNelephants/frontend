@@ -23,7 +23,7 @@ export default function AdminDashboard() {
 
   async function fetchLeads(token) {
     try {
-      const res = await fetch('http://localhost:1337/api/user-leads?populate=*&sort=createdAt:desc', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/user-leads?populate=*&sort=createdAt:desc`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
