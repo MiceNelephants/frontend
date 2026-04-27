@@ -363,7 +363,18 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
+        {/* what is mne */}
+        <section id="what-is-mne" style={{ backgroundColor: CREAM, padding: '4rem 2rem 3rem', borderTop: BORDER }}>
+          <div style={{ maxWidth: '60rem', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-label" style={{ color: GREEN_D }}>— what is Mice &amp; Elephants?</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '2.4rem', color: NIGHT, lineHeight: 1.2, marginBottom: '1.25rem' }}>
+              A privacy-first relay between you and the market.
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#3D4A6B', lineHeight: 1.8, fontFamily: "'DM Sans', sans-serif", maxWidth: '42rem', margin: '0 auto' }}>
+              Mice &amp; Elephants is a neutral relay infrastructure. When you compare quotes, gather information, or negotiate with the big players, your real email and phone never reach them. We mint a temporary identity that stands between you and the marketplace — and you control when it goes dark.
+            </p>
+          </div>
+        </section>  
         {/* rationale */}
         <section id="rationale" className="dark-section" style={{ padding: '5.5rem 2rem' }}>
           <div className="dark-inner two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
@@ -402,13 +413,18 @@ export default function HomePage() {
             </p>
             <div className="four-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
               {[
-                { n: '01', tag: 'Ghost Domain', tagColor: GREEN_D, title: 'Identity masking', desc: 'We generate a unique Relay Identity — e.g. jane.s@miceandelephants.com. That\'s the only address the Elephant ever sees.' },
-                { n: '02', tag: 'Glass Pipe', tagColor: PURPLE, title: 'Peer-to-peer routing', desc: 'We\'re a Smart Router, not a data warehouse. Messages forward in milliseconds, buffers purge on delivery. We don\'t sell data.' },
-                { n: '03', tag: 'SMS Ping', tagColor: GREEN_D, title: 'Real-time alerts', desc: 'The moment a reply arrives, we ping your phone. You stay responsive without handing your number to any vendor. Coming soon.' },
-                { n: '04', tag: 'Kill Switch', tagColor: PURPLE, title: 'One-click exit', desc: 'Deal done? Deactivate the relay with one click. The address enters a blackhole state — hard server reject. Every time. Coming soon.' },
+                { n: '01', tag: 'Ghost Domain', tagColor: GREEN_D, title: 'Identity masking', desc: 'We generate a unique Relay Identity — e.g. jane.s@miceandelephants.com. That\'s the only address the Elephant ever sees.', live: true },
+                { n: '02', tag: 'Glass Pipe', tagColor: PURPLE, title: 'Peer-to-peer routing', desc: 'We\'re a Smart Router, not a data warehouse. Messages forward in milliseconds, buffers purge on delivery. We don\'t sell data.', live: true },
+                { n: '03', tag: 'SMS Ping', tagColor: GREEN_D, title: 'Real-time alerts', desc: 'The moment a reply arrives, we ping your phone. You stay responsive without handing your number to any vendor.', live: false },
+                { n: '04', tag: 'Kill Switch', tagColor: PURPLE, title: 'One-click exit', desc: 'Deal done? Deactivate the relay with one click. The address enters a blackhole state — hard server reject. Every time.', live: false },
               ].map((s) => (
-                <div key={s.n} className="step-card">
+                <div key={s.n} className="step-card" style={{ position: 'relative' }}>
                   <span className="step-number">{s.n}</span>
+                  {s.live ? (
+                    <span style={{ position: 'absolute', top: '0.85rem', right: '4rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.08em', textTransform: 'uppercase', color: GREEN_D, backgroundColor: GREEN + '22', padding: '0.2rem 0.55rem', borderRadius: '999px', border: `2px solid ${GREEN_D}` }}>● live</span>
+                  ) : (
+                    <span style={{ position: 'absolute', top: '0.85rem', right: '4rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.08em', textTransform: 'uppercase', color: PURPLE, backgroundColor: PURPLE + '18', padding: '0.2rem 0.55rem', borderRadius: '999px', border: `2px solid ${PURPLE}` }}>coming soon</span>
+                  )}
                   <span className="tag" style={{ color: s.tagColor, borderColor: s.tagColor, backgroundColor: s.tagColor + '18', marginBottom: '0.75rem', display: 'inline-block' }}>{s.tag}</span>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '1.1rem', color: NIGHT, marginBottom: '0.5rem' }}>{s.title}</h3>
                   <p style={{ fontSize: '0.85rem', color: '#3D4A6B', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>{s.desc}</p>
@@ -417,7 +433,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         {/* use cases */}
         <section id="use-cases" style={{ backgroundColor: CREAM, padding: '5rem 2rem 4.5rem', borderBottom: BORDER }}>
           <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
@@ -443,7 +458,47 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
+              {/* mice vs elephants — coming soon */}
+        <section style={{ backgroundColor: CREAM, padding: '5rem 2rem 4.5rem', borderBottom: BORDER }}>
+          <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
+            <span className="section-label" style={{ color: PURPLE, textAlign: 'center', display: 'block' }}>— coming soon</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '2.6rem', color: NIGHT, textAlign: 'center', marginBottom: '0.75rem' }}>How do the Mice take on the Elephants?</h2>
+            <p style={{ color: '#3D4A6B', textAlign: 'center', fontSize: '0.98rem', maxWidth: '42rem', margin: '0 auto 3rem', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>
+              The relay protects your inbox. But what about when an Elephant disputes a claim, drags out a renewal, or stonewalls a complaint? That's where consumer advocacy comes in — and it's the next layer we're building.
+            </p>
+            <div className="three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
+              {[
+                { tag: 'Myth busters', color: GREEN_D, desc: 'We dig into the small print so you don\'t have to. Independent breakdowns of the clauses, exclusions, and tactics the Elephants don\'t want you to read.' },
+                { tag: 'Claim-tackling service', color: PURPLE, desc: 'Stuck on a denied claim or a runaround renewal? Our advocacy service will help you push back — using the leverage of a collective voice.' },
+                { tag: 'Reach out anytime', color: GREEN_D, desc: 'Got a story to share or an Elephant who deserves a closer look? Drop us a line. We\'re building this with the mice, for the mice.' },
+              ].map((card) => (
+                <div key={card.tag} className="sketch-card" style={{ position: 'relative' }}>
+                  <span style={{ position: 'absolute', top: '0.9rem', right: '0.9rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.08em', textTransform: 'uppercase', color: PURPLE, backgroundColor: PURPLE + '18', padding: '0.2rem 0.55rem', borderRadius: '999px', border: `2px solid ${PURPLE}` }}>coming soon</span>
+                  <span className="tag" style={{ color: card.color, borderColor: card.color, backgroundColor: card.color + '18', marginBottom: '0.75rem', display: 'inline-block' }}>{card.tag}</span>
+                  <p style={{ fontSize: '0.88rem', color: '#3D4A6B', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>{card.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+              <a href="mailto:contact@miceandelephants.com?subject=Elephant story" className="cta-btn-secondary">Tell us your Elephant story →</a>
+            </div>
+          </div>
+        </section>
+        {/* mythbusters film */}
+        <section className="dotgrid" style={{ backgroundColor: PARCHMENT, padding: '5rem 2rem', borderBottom: BORDER }}>
+          <div style={{ maxWidth: '60rem', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-label" style={{ color: PURPLE }}>— coming soon</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '2.4rem', color: NIGHT, marginBottom: '1rem' }}>Mice &amp; Elephants: The Mythbusters Film.</h2>
+            <p style={{ fontSize: '1rem', color: '#3D4A6B', lineHeight: 1.8, marginBottom: '2rem', fontFamily: "'DM Sans', sans-serif", maxWidth: '40rem', marginLeft: 'auto', marginRight: 'auto' }}>
+              We're putting the marketplace under the microscope. A short documentary series — science-backed, evidence-led — testing the claims the Elephants make, and showing the mice how it really works behind the scenes.
+            </p>
+            <div style={{ display: 'inline-block', border: `3px dashed ${PURPLE}`, borderRadius: '16px', padding: '1.25rem 2rem', backgroundColor: CREAM, boxShadow: SHADOW_SM }}>
+              <p style={{ fontFamily: "'Caveat', cursive", fontSize: '1.4rem', color: NIGHT, lineHeight: 1.4 }}>
+                "We brought the science. We got the <span style={{ color: GREEN_D }}>truth</span>."
+              </p>
+            </div>
+          </div>
+        </section>
         {/* embed */}
         <section className="dotgrid" style={{ backgroundColor: PARCHMENT, padding: '5rem 2rem', borderBottom: BORDER }}>
           <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
@@ -500,7 +555,20 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
+        {/* refer a partner */}
+        <section style={{ backgroundColor: PARCHMENT, padding: '4.5rem 2rem', borderTop: BORDER, borderBottom: BORDER }}>
+          <div style={{ maxWidth: '60rem', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-label" style={{ color: GREEN_D }}>— spread the word</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '2.2rem', color: NIGHT, marginBottom: '1rem' }}>Know a dealer or broker who should join?</h2>
+            <p style={{ fontSize: '0.96rem', color: '#3D4A6B', lineHeight: 1.8, marginBottom: '2rem', fontFamily: "'DM Sans', sans-serif", maxWidth: '38rem', marginLeft: 'auto', marginRight: 'auto' }}>
+              Refer a dealer, broker, or platform to Mice &amp; Elephants. The more partners on the relay, the stronger the network — and the better the protection for every mouse using it.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="mailto:contact@miceandelephants.com?subject=Partner referral" className="cta-btn-primary">Refer a partner →</a>
+              <a href="#contact" className="cta-btn-secondary">I am a dealer or broker</a>
+            </div>
+          </div>
+        </section>
         {/* contact */}
         <section id="contact" className="dark-section" style={{ padding: '6rem 2rem' }}>
           <div className="contact-grid dark-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
